@@ -20,55 +20,16 @@ np.random.seed(1337)
 
 
 def split_data(X, y, test_data_size):
-    '''
-    Split data into test and training datasets.
-
-    INPUT
-        X: NumPy array of arrays
-        y: Pandas series, which are the labels for input array X
-        test_data_size: size of test/train split. Value from 0 to 1
-
-    OUPUT
-        Four arrays: X_train, X_test, y_train, and y_test
-    '''
+    
     return train_test_split(X, y, test_size=test_data_size, random_state=42)
 
 
 def reshape_data(arr, img_rows, img_cols, channels):
-    '''
-    Reshapes the data into format for CNN.
-
-    INPUT
-        arr: Array of NumPy arrays.
-        img_rows: Image height
-        img_cols: Image width
-        channels: Specify if the image is grayscale (1) or RGB (3)
-
-    OUTPUT
-        Reshaped array of NumPy arrays.
-    '''
+    
     return arr.reshape(arr.shape[0], img_rows, img_cols, channels)
 
 
 def cnn_model(X_train, X_test, y_train, y_test, kernel_size, nb_filters, channels, nb_epoch, batch_size, nb_classes):
-    '''
-    Define and run the Convolutional Neural Network
-
-    INPUT
-        X_train: Array of NumPy arrays
-        X_test: Array of NumPy arrays
-        y_train: Array of labels
-        y_test: Array of labels
-        kernel_size: Initial size of kernel
-        nb_filters: Initial number of filters
-        channels: Specify if the image is grayscale (1) or RGB (3)
-        nb_epoch: Number of epochs
-        batch_size: Batch size for the model
-        nb_classes: Number of classes for classification
-
-    OUTPUT
-        Fitted CNN model
-    '''
 
     model = Sequential()
 
@@ -137,14 +98,6 @@ def cnn_model(X_train, X_test, y_train, y_test, kernel_size, nb_filters, channel
 
 
 def save_model(model, score, model_name):
-    '''
-    Saves Keras model to an h5 file, based on precision_score
-
-    INPUT
-        model: Keras model object to be saved
-        score: Score to determine if model should be saved.
-        model_name: name of model to be saved
-    '''
 
     if score >= 0.75:
         print("Saving Model")
